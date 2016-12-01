@@ -7,19 +7,19 @@ class JsonratesTest < ActiveSupport::TestCase
 
   test "don't support convert action yet" do
     jsonrates = Jsonrates.new(:convert)
-    rates = jsonrates.load
+    rates = jsonrates.load_data
     assert_equal rates, @not_supported
   end
 
   test "don't support timeframe action yet" do
     jsonrates = Jsonrates.new(:timeframe)
-    rates = jsonrates.load
+    rates = jsonrates.load_data
     assert_equal rates, @not_supported
   end
 
   test "don't support change action yet" do
     jsonrates = Jsonrates.new(:change)
-    rates = jsonrates.load
+    rates = jsonrates.load_data
     assert_equal rates, @not_supported
   end
 
@@ -35,7 +35,7 @@ class JsonratesTest < ActiveSupport::TestCase
 
   test "load default json data" do
     jsonrates = Jsonrates.new
-    rates = jsonrates.load
+    rates = jsonrates.load_data
     assert_equal rates['success'], true
   end
 end

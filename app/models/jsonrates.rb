@@ -6,16 +6,19 @@ class Jsonrates
   ACCESS_KEY = "access_key=#{ENV['ENDPOINT_API_KEY']}"
 
   attr_accessor :action, :currencies
+  attr_reader :loaded_data
 
   def initialize(action = :live)
     @action = action
     @currencies = []
+    @loaded_data = self.load_data
   end
 
-  def load
+  def load_data
     return "Don't support this action yet!" unless check_api_support
     stream = open(url_with_access_key)
-    JSON.parse(stream.read)
+    @loaded_data = JSON.parse(stream.read)
+    return @loaded_data
   end
 
   def build_url
