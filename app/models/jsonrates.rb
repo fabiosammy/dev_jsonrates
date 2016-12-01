@@ -13,7 +13,7 @@ class Jsonrates
   end
 
   def build_url
-    url = "#{ENDPOINT_API}#{@action}/?"
+    url = "#{ENDPOINT_API}#{@action}?"
     url += "&date=#{@date.strftime("%Y-%M-%D")}" if @action == :historical
     url += "&currencies=#{@currencies.join(',')}" unless @currencies.empty?
     return url

@@ -30,6 +30,6 @@ class JsonratesTest < ActiveSupport::TestCase
 
   test "build url to default live action" do
     jsonrates = Jsonrates.new
-    assert_equal jsonrates.build_url, "http://apilayer.net/api/live/?"
+    assert_equal jsonrates.build_url, "http://apilayer.net/api/live?"
   end
 end
