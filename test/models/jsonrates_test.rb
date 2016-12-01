@@ -32,4 +32,10 @@ class JsonratesTest < ActiveSupport::TestCase
     jsonrates = Jsonrates.new
     assert_equal jsonrates.build_url, "http://apilayer.net/api/live?"
   end
+
+  test "load default json data" do
+    jsonrates = Jsonrates.new
+    rates = jsonrates.load
+    assert_equal rates['success'], true
+  end
 end

@@ -1,5 +1,9 @@
+require 'open-uri'
+require 'json'
+
 class Jsonrates
   ENDPOINT_API = 'http://apilayer.net/api/'
+  ACCESS_KEY = "access_key=#{ENV['ENDPOINT_API_KEY']}"
 
   attr_accessor :action, :currencies
 
@@ -10,6 +14,8 @@ class Jsonrates
 
   def load
     return "Don't support this action yet!" unless check_api_support
+    stream = open(url_with_access_key)
+    JSON.parse(stream.read)
   end
 
   def build_url
@@ -21,6 +27,10 @@ class Jsonrates
 
   def persisted?
     false
+  end
+
+  def url_with_access_key
+    "#{build_url}&#{ACCESS_KEY}"
   end
 
   private
