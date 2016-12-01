@@ -24,7 +24,12 @@ class JsonratesTest < ActiveSupport::TestCase
   end
 
   test "Jsonrates isn't persisted" do
-    jsonrates = Jsonrates.new 
+    jsonrates = Jsonrates.new
     assert_equal jsonrates.persisted?, false
+  end
+
+  test "build url to default live action" do
+    jsonrates = Jsonrates.new
+    assert_equal jsonrates.build_url, "http://apilayer.net/api/live/?"
   end
 end
