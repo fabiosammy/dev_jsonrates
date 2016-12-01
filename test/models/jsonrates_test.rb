@@ -22,4 +22,9 @@ class JsonratesTest < ActiveSupport::TestCase
     rates = jsonrates.load
     assert_equal rates, @not_supported
   end
+
+  test "Jsonrates isn't persisted" do
+    jsonrates = Jsonrates.new 
+    assert_equal jsonrates.persisted?, false
+  end
 end

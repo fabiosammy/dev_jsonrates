@@ -10,6 +10,10 @@ class Jsonrates
     return "Don't support this action yet!" unless check_api_support
   end
 
+  def persisted?
+    false
+  end
+
   private
 
   def check_api_support
