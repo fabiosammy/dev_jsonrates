@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class JsonratesTest < ActiveSupport::TestCase
-  def setup do
+  def setup
     @not_supported = "Don't support this action yet!"
   end
 
