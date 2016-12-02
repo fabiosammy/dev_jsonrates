@@ -1,7 +1,14 @@
-<div class="container">
-  <h1>Home#index</h1>
-  <p>Find me in app/views/home/index.html.erb</p>
-  <p><%= @stocks %></p>
+<div class="section scrollspy">
+  <ul class="collapsible collapsible-accordion">
+    <li>
+      <div class="collapsible-header">Selecione as moedas</div>
+      <div class="collapsible-body">
+        <ul class="collection">
+          <%= load_categories_links(@stocks, @categories) %>
+        </ul>
+      </div>
+    </li>
+  </ul>
 </div>
 
 <div class="container">
