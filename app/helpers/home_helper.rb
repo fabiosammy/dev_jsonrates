@@ -16,7 +16,9 @@ module HomeHelper
   private
 
   def has_category(category, params)
-    link_to category, root_url(categories: params.dup.delete(category)), class: 'collection-item active'
+    new_params = params.dup
+    new_params.delete(category)
+    link_to category, root_url(categories: new_params), class: 'collection-item active'
   end
 
   def dont_has_category(category, params)
