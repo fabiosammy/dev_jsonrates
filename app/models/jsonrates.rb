@@ -15,6 +15,18 @@ class Jsonrates
     @loaded_data = self.load_data
   end
 
+  def timestamp
+    @loaded_data['timestamp']
+  end
+
+  def datetime
+    Time.at(timestamp)
+  end
+
+  def source
+    @loaded_data['source']
+  end
+
   def load_data
     return "Don't support this action yet!" unless check_api_support
     stream = open(url_with_access_key)

@@ -18,6 +18,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # Use materialize to frontend
 gem 'materialize-sass', '~> 0.97.8'
+# Use highcharts and highstock to charts
+gem 'highcharts-rails', '~> 4.1', '>= 4.1.9'
+gem 'highstock-rails', '~> 2.1', '>= 2.1.10'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
