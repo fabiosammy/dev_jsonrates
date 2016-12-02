@@ -16,6 +16,6 @@
 //= require materialize-sprockets
 //= require highcharts
 //= require highcharts/highcharts-more
-//= require highstock
-//= require highstock/highcharts-more
+// require highstock
+// require highstock/highcharts-more
 //= require_tree .
