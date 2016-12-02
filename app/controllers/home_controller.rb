@@ -20,7 +20,7 @@ class HomeController < ApplicationController
   def load_categories_series(categories_params)
     data_stocks = []
     categories_params.each do |category|
-      data_stocks.push @stocks.to_series(category.to_sym)
+      data_stocks.push @stocks.to_series(category[-3, 3].to_sym, category[0, 3].to_sym)
     end
     data_stocks.push @stocks.to_series if data_stocks.empty?
     data_stocks
