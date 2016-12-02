@@ -5,6 +5,11 @@ class HomeController < ApplicationController
     @data_stocks = load_categories_series(@categories)
   end
 
+  def update_stocks
+    Stock.load_api
+    redirect_to root_url, alert: 'Tabela de valores atualizada!'
+  end
+
   private
 
   def load_categories(categories_params)
