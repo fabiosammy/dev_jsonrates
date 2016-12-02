@@ -6,10 +6,11 @@ class Jsonrates
   ACCESS_KEY = "access_key=#{ENV['ENDPOINT_API_KEY']}"
 
   attr_accessor :action, :currencies
-  attr_reader :loaded_data
+  attr_reader :loaded_data, :date
 
-  def initialize(action = :live)
-    @action = action
+  def initialize(date = Date.today)
+    @action = date == Date.today ? :live : :historical
+    @date = date
     @currencies = []
     @loaded_data = self.load_data
   end
@@ -23,7 +24,7 @@ class Jsonrates
 
   def build_url
     url = "#{ENDPOINT_API}#{@action}?"
-    url += "&date=#{@date.strftime("%Y-%M-%D")}" if @action == :historical
+    url += "&date=#{@date.strftime("%Y-%m-%d")}" if @action == :historical
     url += "&currencies=#{@currencies.join(',')}" unless @currencies.empty?
     return url
   end
