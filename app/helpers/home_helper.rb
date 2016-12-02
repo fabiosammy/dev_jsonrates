@@ -1,6 +1,7 @@
 module HomeHelper
   def load_categories_links(stocks, categories_params)
     links = ''
+    return links if stocks.first.nil?
     stocks.first.data['quotes'].keys.each do |category|
       links += "<li>"
       if categories_params.include?(category)
