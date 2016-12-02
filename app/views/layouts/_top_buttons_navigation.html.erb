@@ -1,1 +1,9 @@
-<li><a href="#">Navbar Link</a></li>
+<li><%= link_to '<i class="material-icons left">loop</i>Atualizar valores'.html_safe, update_stocks_path %></li>
+<% unless @stock.nil? %>
+  <li>
+    <a href="#!">
+      <i class="material-icons left">info_outline</i>
+      Last update of stocks: <%= l @stock.updated_at, format: :short %>
+    </a>
+  </li>
+<% end %>

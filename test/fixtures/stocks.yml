@@ -1,9 +1,1 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  'on': 2016-12-02 02:10:22
-  data: MyText
-
-two:
-  'on': 2016-12-02 02:10:22
-  data: MyText
