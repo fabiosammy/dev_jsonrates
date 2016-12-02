@@ -1,5 +1,13 @@
 <div class="container">
   <h1>Home#index</h1>
   <p>Find me in app/views/home/index.html.erb</p>
-  <p><%= @jsonrates.loaded_data %></p>
+  <p><%= @stocks %></p>
 </div>
+
+<div class="container">
+  <div class="row center">
+    <div id="stockChart" data-stock="<%= @data_stocks.to_json %>"></div>
+  </div>
+</div>
+
+<script>loadStock('stockChart');</script>
