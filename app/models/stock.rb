@@ -15,22 +15,26 @@ class Stock < ApplicationRecord
     end
   end
 
-  # Return the data series format to use in highcharts
-  # PS: You need multiple by 1000 the timestamp, because of js format
-  def self.from_USD(to)
-    from_to = "USD#{to}"
-    data = []
-    all.each do |stock|
-      data.push [stock.data['timestamp'] * 1000, stock.data['quotes'][from_to]]
-    end
-    return {
-      name: "Comparativo de USD para #{to}",
-      data: data,
-    }
+  # Build new quote from another currency
+  def build_quotes(to, from, quotes)
+    quote_usd_value_from = quotes["USD#{from}"]
+    quote_usd_value_to = quotes["USD#{to}"]
+    (1 / quote_usd_value_to) * (quote_usd_value_from / 1)
   end
 
+  # Return the data series format to use in highcharts
+  # PS: You need multiple by 1000 the timestamp, because of js format
   def self.to_series(to = :EUR, from = :USD)
-    return nil if from != :USD
-    return from_USD(to)
+    data = []
+    from_to = "USD#{to}"
+    all.each do |stock|
+      quote = from.to_sym == :USD ? stock.data['quotes'][from_to] :
+        build_quote(to, from, stock.data['quotes'])
+      data.push [stock.data['timestamp'] * 1000, quote]
+    end
+    return {
+      name: "Comparativo de #{from} para #{to}",
+      data: data
+    }
   end
 end
