@@ -16,7 +16,7 @@ class Stock < ApplicationRecord
   end
 
   # Build new quote from another currency
-  def build_quotes(to, from, quotes)
+  def self.build_quote(to, from, quotes)
     quote_usd_value_from = quotes["USD#{from}"]
     quote_usd_value_to = quotes["USD#{to}"]
     (1 / quote_usd_value_to) * (quote_usd_value_from / 1)
